@@ -89,7 +89,7 @@ graph TD
 	}
 ```
 ###### 修改
-```
+``` java
  @RequestMapping("/updateUser")
      public String updateUser(Model model,TbUser tbUser,HttpServletResponse response,Integer flag,HttpSession session){
     	 response.setCharacterEncoding("utf-8");
