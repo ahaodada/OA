@@ -58,11 +58,11 @@ graph TD
     E -->H[登录成功确认身份]
     F -->J[重新登陆]
     G -->J[重新登陆]
- 
+    
 ```
 ---
 ### 二.用户管理
-![界面](C://Users//Administrator//Desktop//图片//用户管理.png)
+![img](https://github.com/ahaodada/OA/blob/master/%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86.png?raw=true)
 可以查询到当前用户，以及公司所有用户的用户量，管理员可以进行修改，添加，删除，批量删除等功能，普通用户自由查询的权限，其中特为注意的是，修改页面和登录页面未同页面，为了区分页面，我在传入后端数据的时候，添加了一个变量，当变量为1，为添加页面，当变量为其他数，都为修改页面，要带入参数返回界面的：
 ###### 添加
 ``` java
@@ -119,22 +119,22 @@ graph TD
 ```
 ---
 ### 三.部门管理
-![界面](C://Users//Administrator//Desktop//图片//部门管理.png)
+![img](https://github.com/ahaodada/OA/blob/master/%E9%83%A8%E9%97%A8%E7%AE%A1%E7%90%86.png?raw=true)
 主要功能和用户管理差不多，在页面跳转方面利用的也是变量，机制跟用户管理一样。
 
 ---
 ### 四.职位管理
-![界面](C://Users//Administrator//Desktop//图片//职位管理.png)
+![img](https://github.com/ahaodada/OA/blob/master/%E8%81%8C%E4%BD%8D%E7%AE%A1%E7%90%86.png?raw=true)
 主要功能和用户管理差不多，在页面跳转方面利用的也是变量，机制跟用户管理一样。
 
 ---
 ### 五.员工管理
-![界面](C://Users//Administrator//Desktop//图片//员工管理.png)
+![img](https://github.com/ahaodada/OA/blob/master/%E5%91%98%E5%B7%A5%E7%AE%A1%E7%90%86.png?raw=true)
 主要功能和用户管理差不多，在页面跳转方面利用的也是变量，机制跟用户管理一样。
 
 ---
 ### 六.公告管理
-![界面](C://Users//Administrator//Desktop//图片//公告管理.png)
+![img](https://github.com/ahaodada/OA/blob/master/%E5%85%AC%E5%91%8A%E7%AE%A1%E7%90%86.png?raw=true)
 公告管理的前2个部分没有什么好说的，跟前面的机制都一样，主要是发送邮件和发送短信这一块，发送短信这块在测试的时候用的第三方253云通讯的接口，可以免费发送，邮件功能只是做到可以发送，没有接入第三方的接口，有需要的可以写接入接口就可以发生成功：
 ###### 发送短信
 ```
@@ -182,7 +182,7 @@ graph TD
 
 ---
 ### 七.下载中心
-![界面](C://Users//Administrator//Desktop//图片//下载中心.png)
+![img](https://github.com/ahaodada/OA/blob/master/%E4%B8%8B%E8%BD%BD%E4%B8%AD%E5%BF%83.png?raw=true)
 下载中心主要是员工以及管理员之间上传了一些文档，可以相互之间下载，方便交流沟通，点击下载按钮就可以下载到本地，还是方便的，功能全实现了，可以当做参考，同样的，管理员具有删除功能，普通用户只可以下载和上传：
 ###### 上传
 ```
@@ -239,7 +239,7 @@ graph TD
  }
 ```
 ### 八.签到管理
-![界面](C://Users//Administrator//Desktop//图片//签到管理.png)
+![img](https://github.com/ahaodada/OA/blob/master/%E7%AD%BE%E5%88%B0%E7%AE%A1%E7%90%86.png?raw=true)
 员工可以再这里进行简单的上下班打卡，以及查询自己本周，本月的打卡情况，都可以用图表的形式给展示出来，非常的方便，打卡系统，不是特别的完美，主要是在时间上一些设置，当你现在发起打卡请求的时间超过了设定好的每天具体时间，可以打卡，当是会显示迟到，下班卡无需在打，第二天登录，检测日期，日期变了就重置打卡：
 ###### 签到
 ```
@@ -284,7 +284,7 @@ graph TD
 ```
 ---
 ### 九.生成报表
-![界面](C://Users//Administrator//Desktop//图片//报表管理.png)
+![img](https://github.com/ahaodada/OA/blob/master/%E6%8A%A5%E8%A1%A8%E7%AE%A1%E7%90%86.png?raw=true)
 主要是导出为PDF格式，和Excel格式；
 ```
 //导出Excel
