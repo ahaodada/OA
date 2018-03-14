@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>CHOA</display-name>
+  <welcome-file-list>
+    <welcome-file>/WEB-INF/jsp/login.jsp</welcome-file>
+  </welcome-file-list>
+   <!-- 配置前端控制器 -->
+	<servlet>
+		<servlet-name>SpringMVC</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- 加载配置文件 -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:application.xml</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<!-- 监听器加载mybatis配置文件 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:mybatis.xml</param-value>
+	</context-param>
+
+	<!-- 解决中文乱码问题 -->
+	<filter>
+		<filter-name>CharsetFilter</filter-name>
+		<!-- 用来解决post请求时的中文乱码问题 -->
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<!-- 指定默认的post请求编码 -->
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharsetFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
+	     <filter-name>myfitler</filter-name>
+	     <filter-class>com.ch.www.filter.MyFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	      <filter-name>myfitler</filter-name>
+	      <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- 配置全局的错误页面 -->
+	<error-page>
+	      <error-code>404</error-code>
+	      <location>/404.html</location>
+	</error-page>
+	<error-page>
+	      <error-code>500</error-code>
+	      <location>/500.html</location>
+	</error-page>
+	
+	<!-- jsp全局配置 -->
+	<jsp-config>
+	    <jsp-property-group>
+	         <url-pattern>*.jsp</url-pattern>
+	         <!-- 是否忽略el表达式 -->
+	         <el-ignored>false</el-ignored>
+	         <scripting-invalid>true</scripting-invalid>
+	         <!--引入一个全局的jsp文件，在该文件中定义一个全局变量  -->
+	         <include-prelude>/WEB-INF/jsp/taglib.jsp</include-prelude>
+	    </jsp-property-group>
+	</jsp-config>
+	
+	<!--配置Druid监控的Servlet  -->
+	<!-- com.alibaba.druid.support.http.StatViewServlet -->
+	 <servlet>
+	     <servlet-name>StatViewServlet</servlet-name>
+	     <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+	     <init-param>
+	          <param-name>resetEnable</param-name>
+	          <param-value>false</param-value>
+	     </init-param>
+	     <init-param>
+	           <param-name>loginUsername</param-name>
+	           <param-value>ch</param-value>
+	     </init-param>
+	      <init-param>
+	           <param-name>loginPassword</param-name>
+	           <param-value>123456</param-value>
+	     </init-param>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>StatViewServlet</servlet-name>
+	   <url-pattern>/druid/*</url-pattern>
+	</servlet-mapping>
+	 
+</web-app>

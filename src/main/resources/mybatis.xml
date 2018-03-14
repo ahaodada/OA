@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd 
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd 
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-3.1.xsd 
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx-3.1.xsd ">
+        
+    <context:property-placeholder location="classpath:db.properties" />
+    <!--配置解密bean  -->
+ <!--  <bean id="dpPassword" class="com.ch.www.util.DBPasswordCallback"></bean> -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close" lazy-init="true">
+		<!-- 基本属性 url、user、password -->
+		<property name="driverClassName" value="${jdbc.driverclass}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	
+		<property name="filters" value="wall,stat" />
+		<property name="maxActive" value="2000" />	
+		<property name="initialSize" value="10" />	
+		<property name="minIdle" value="2" />
+		<property name="maxWait" value="60000" />	
+		 <!--配置Druid的密码解密属性  -->
+		<!--  <property name="connectionProperties" value="password=${jdbc.password}"></property>
+		 <property name="passwordCallback" ref="dpPassword"></property> -->
+	</bean>
+
+	<!-- 配置SessionFactory对象 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- 负责创建XXXMapper类的代理对象 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 指明Mapper接口类的范围 -->
+		<property name="basePackage" value="com.ch.www.mapper"/>
+		<!-- 引用SqlSessionFactoryBean对象 -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+	</bean>
+
+   
+   
+ </beans>
