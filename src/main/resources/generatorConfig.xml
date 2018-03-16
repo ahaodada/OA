@@ -49,7 +49,14 @@
 		</javaClientGenerator>
 
 		<!-- 指定数据库表 -->
+		<table tableName="tb_user"/>
+		<table tableName="tb_sign"/>
+		<table tableName="tb_job"/>
+		<table tableName="tb_employee"/>
+		<table tableName="tb_doc"/>
+		<table tableName="tb_dept"/>
 		<table tableName="tb_advice"/>
+		<table tableName="products"/>
 		
 		
 		
